@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Vue js</title>
+</head>
+<body>
+
+  <div id="app">
+    <!-- <h1>{{message}}</h1> -->
+    <!-- the below and the above are the same -->
+    <!-- <h1 v-text="message"></h1> -->
+
+    <!-- <h1 v-html="message"></h1> -->
+
+    <h1> {{text}} : {{text2}}</h1>
+
+    <!-- <a v-bind:href="website">{{msg}}</a> -->
+    <!-- <a :[a1]="website">{{msg}}</a> -->
+    <a @click.prevent = "clicked" href = "website">{{msg}}</a>
+
+    <br><br>
+    <button @click = "changetext(), changeagain()">Try Me</button>
+    <br>
+
+    <!-- only condition-met values are loaded in DOM -->
+    <!-- <h1 v-if = "a" style="color: green">A is True...Green</h1>
+    <h1 v-else style="color:red">A is False...Red</h1> -->
+
+    <!-- always rendered, remains in DOM and only toggles the display of CSS -->
+    <h1 v-show = "a">A is True</h1>
+
+    <h3 v-for = "item in list">{{item}}</h3>
+
+    <ul v-for = "item in list">
+      <li>{{item}}</li>
+    </ul>
+
+    <!-- <input type="text" v-model="Entry" placeholder="Enter Here"> -->
+    <input type="text" v-model.lazy="Entry" placeholder="Enter Here">
+    <h1>You have entered: {{Entry}}</h1>
+
+    <p>Please select one option:</p>
+
+    <input type="radio" id="form" v-model="FormEntry" value="Form">
+    <label for="form">Form</label><br>
+
+    <input type="radio" id="text" v-model="FormEntry" value="Text">
+    <label for="text">Text</label><br>
+
+    <input type="radio" id="select" v-model="FormEntry" value="Select">
+    <label for="select">Select</label><br>
+
+    <h1>You have selected: {{FormEntry}}</h1>
+
+    <input v-model="firstName" placeholder="Enter first name"></input><br><br>
+    <input v-model="lastName" placeholder="Enter last name"></input>
+
+    <!-- <h2>Full name from template: {{firstName}} {{lastName}}</h2>
+    <h2>Full name from computed: {{fullName}}</h2> -->
+    <h2>Full name from watch: {{fullName}}</h2>
+
+  </div>
+
+  <script type="module">
+    import { createApp } from 'http://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    const HelloWorld = { 
+      data(){
+        return{
+          // message: "Hello from directive"
+          // message: "<h1> This is html </h1>",
+          text: "Hello",
+          text2: "Inline handler",
+          website: "https://www.nus.edu.sg",
+          msg: "Click Me",
+          a1: "href",
+          a: true,
+          list: ["Apple", "Orange", "Banana"],
+          Entry: "",
+          FormEntry: "",
+          firstName: "",
+          lastName: "",
+          fullName: ""
+        }
+      },
+
+      methods:{
+        changetext(){
+          this.text = "Hello from changetext!"
+        },
+
+        changeagain(){
+          this.text2 = "Hello from changeagain!"
+        },
+
+        clicked(){
+          alert("Going to NUS website")
+        }
+      },
+
+      // // Transformations to Data
+      // computed:{
+      //   fullName(){
+      //     return (this.lastName + " " + this.firstName)
+      //   }
+      // },
+
+      // Listen to Data Change and act
+      watch:{
+        firstName(val){
+          this.fullName = val + " " + this.lastName
+        },
+
+        lastName(val){
+          this.fullName = this.firstName + " " + val
+        }
+      }
+    }
+
+    createApp(HelloWorld).mount('#app')
+  </script>
+
+</body>
+</html>

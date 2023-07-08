@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class and ID</title>
+    <style>
+        .main{
+            width: 600px;
+            height: 600px;
+            background-color: aqua;
+        }
+
+        #first, #second{
+            height: 280px;
+            width: 280px;
+            background-color: blue;
+            float: left;
+            color: orange;
+            font-size: 30px;
+            border: 10px solid black;
+        }
+
+        #third, #fourth{
+            height: 280px;
+            width: 280px;
+            background-color: orange;
+            float: left;
+            color: blue;
+            font-size: 30px;
+            border: 10px solid black;
+        }
+
+        #second, #fourth{
+            float: left;
+        }
+
+        #first, #third{
+            float: right;
+        }
+
+        #first:hover{
+            background-color: green;
+        }
+
+        #second:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div Class = "main">
+        <div id = "first">This is first div</div>
+        <div id = "second">This is second div</div><hr>
+        <div id = "third">This is third div</div>
+        <div id = "fourth">This is fourth div</div>
+    </div>
+</body>
+</html>
